@@ -1,0 +1,71 @@
+
+
+<div class="wrapAll">
+  <br/><br/><br/>
+ประเภทสินค้า<p-dropdown id="categoryCode" (onChange)="searchTable($event.value)" [options]="productType"  ></p-dropdown>
+จำนวนรายการที่แสดง<p-dropdown id="rowPerPage" [options]="productList" placeholder="Select a City" ></p-dropdown>
+รถเข็น <a id="cartNum"(click)="setOrder()"routerLink ="/shopping/shopping/cart">({{countOrder}})</a>
+
+<br/><br/><br/>
+<div class="tableDepartment">
+  <p-table id="productTable" [value]="valueList" [paginator]="true" [rows]="8" [rowsPerPageOptions]="[5,10,15]" selectionMode="single"
+    class="tableWrap">
+    <!--[scrollable]="true" scrollHeight="450px" -->
+
+    <!--AddDataBtn-->
+
+
+
+
+    <ng-template pTemplate="header" let-columns>
+
+      <tr>
+        <th>
+        ชื่อสินค้า
+        </th>
+        <th>
+        รายละเอียด
+        </th>
+        <th>
+          ราคา
+        </th>
+        <th>
+         ดูรายละเอียด
+        </th>
+        <th>
+          ใส่ตะกร้า
+        </th>
+        
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-columns>
+      <tr id="tableRow" appBudgetOverload [pSelectableRow]="columns">
+        <td class="tdItem" style=text-align:left;>
+          {{columns.productName}}
+        </td>
+        <td class="tdItem2" style=text-align:left;>
+          {{columns.detail | slice:0:50}}
+        </td>
+        <td class="tdItem" style=text-align:right;>
+          {{columns.price | number:'1.2'}}
+        </td>
+       
+        <td class="tdItem" style=text-align:center;>
+          <button pButton label="แสดง"type="button" (click)="emitCode(columns.category.categoryCode)" routerLink="/shopping/shopping/view/{{columns.productCode}}" id="viewProductBtn" class="ui-button-primary" icon="pi pi-tag">
+          </button>
+        </td>
+        <td class="tdItem" style=text-align:center;>
+          <button pButton label="เลือก" type="button" id="selectProductBtn"
+            class="ui-button-success" icon="pi pi-plus" (click) = "addOrder(columns)">
+          </button>
+        </td>
+
+
+
+      </tr>
+    </ng-template>
+
+
+  </p-table>
+</div>
+</div>

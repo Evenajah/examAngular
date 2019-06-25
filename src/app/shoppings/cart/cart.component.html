@@ -1,0 +1,63 @@
+<p-table id="cartTable" [value]="cartRecieve"  selectionMode="single"
+    class="tableWrap">
+    <!--[scrollable]="true" scrollHeight="450px" -->
+
+    <!--AddDataBtn-->
+
+
+
+
+    <ng-template pTemplate="header" let-columns>
+
+      <tr>
+        <th>
+        ชื่อสินค้า
+        </th>
+        <th>
+        ราคา
+        </th>
+        <th>
+         จำนวน 
+        </th>
+        <th>
+        คำนวณ
+        </th>
+        <th>
+          
+        </th>
+        
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-columns>
+      <tr id="tableRow" appBudgetOverload [pSelectableRow]="columns">
+        <td class="tdItem" style=text-align:left;>
+          {{columns.product.productName}}
+        </td>
+        
+        <td class="tdItem" style=text-align:right;>
+          {{columns.product.price | number:'1.2'}}
+        </td>
+       
+        <td class="tdItem" style=text-align:center;>
+            <p-dropdown id="categoryCode" (onChange)="calculatePrice(columns,$event.value)" [options]="totalItem"  ></p-dropdown>
+        </td>
+        <td class="tdItem" style=text-align:right;>
+            {{columns.product.totalPrice | number:'1.2'}}
+        </td>
+        <td class="tdItem" style=text-align:right;>
+            <button pButton type="button"  id="delOrderBtn" class="ui-button-primary" label="ลบ" ></button>
+        </td>
+
+
+
+      </tr>
+    </ng-template>
+
+
+  </p-table>
+<br/>
+<div [formGroup] = "customerForm">
+  รหัสลูกค้า : <input formControlName="customerId" type="text" pInputText /><br/><br/>
+  <button pButton type="button" routerLink="/shopping/shopping/buy" id="makeOrderBtn" (click)="makeOrder()" class="ui-button-primary" label="สั่งซื้อ" ></button>
+ &nbsp;
+  <button pButton type="button" routerLink="/shopping/shopping" id="backBtn" class="ui-button-primary" label="กลับ" ></button>

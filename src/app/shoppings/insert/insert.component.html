@@ -1,0 +1,9 @@
+<div class="wrap" [formGroup]="customerForm">
+<h1>ข้อมูลสมาชิก</h1><br/>
+
+<div classs="wrapForm">รหัสสมาชิก</div> <input formControlName="customerId" type="text" pInputText /> <br/>
+ชื่อ <br/><input formControlName="firstName" type="text" pInputText /> <br/>
+นามสกุล<br/> <input formControlName="lastName"  type="text" pInputText /> <br/>
+ที่อยู่ <br/><textarea rows="5" cols="30" formControlName="address"  pInputTextarea></textarea> <br/>
+<button pButton type="button" id="okBtn" (click)="sendOrder()" class="ui-button-primary" label="ตกลง" ></button>
+</div>

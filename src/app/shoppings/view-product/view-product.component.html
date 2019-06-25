@@ -1,0 +1,54 @@
+<div class="wrap">
+
+<p-table id="productTable" [value]="valueProduct" selectionMode="single" class="tableWrap">
+  <!--[scrollable]="true" scrollHeight="450px" -->
+
+  <!--AddDataBtn-->
+
+
+  <ng-template pTemplate="header" let-columns>
+
+
+  </ng-template>
+  <ng-template pTemplate="body" let-columns>
+    <tr id="tableRow" appBudgetOverload [pSelectableRow]="columns">
+      <td class="tdItem" style=text-align:left;width:10%;>
+        รหัสสินค้า
+      </td>
+      <td class="tdItem" style=text-align:left;>
+        {{columns.productCode}}
+      </td>
+    </tr>
+    <tr id="tableRow" appBudgetOverload [pSelectableRow]="columns">
+      <td class="tdItem" style=text-align:left;>
+        ชื่อสินค้า
+      </td>
+      <td class="tdItem" style=text-align:left;>
+        {{columns.productName}}
+      </td>
+    </tr>
+    <tr id="tableRow" appBudgetOverload [pSelectableRow]="columns">
+      <td class="tdItem" style=text-align:left;>
+        รายละเอียด
+      </td>
+      <td class="tdItem" style=text-align:left;>
+        {{columns.detail}}
+      </td>
+    </tr>
+    <tr id="tableRow" appBudgetOverload [pSelectableRow]="columns">
+      <td class="tdItem" style=text-align:left;>
+        ราคา
+      </td>
+      <td class="tdItem" style=text-align:left;>
+        {{columns.price | number:'1.2'}}
+      </td>
+    </tr>
+
+  </ng-template>
+
+
+</p-table>
+
+<button pButton type="button" routerLink="/shopping/shopping"id="backBtn" class="ui-button-primary" label="กลับ" >
+</button>
+</div>
